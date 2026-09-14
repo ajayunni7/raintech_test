@@ -53,7 +53,7 @@ class BookingSummaryWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -78,12 +78,12 @@ class BookingSummaryWidget extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(Icons.receipt_long_rounded, color: Colors.white.withOpacity(0.8)),
+                      Icon(Icons.receipt_long_rounded, color: Colors.white.withValues(alpha: 0.8)),
                       if (onClose != null) ...[
                         const SizedBox(width: 12),
                         InkWell(
                           onTap: onClose,
-                          child: Icon(Icons.close_rounded, color: Colors.white.withOpacity(0.8)),
+                          child: Icon(Icons.close_rounded, color: Colors.white.withValues(alpha: 0.8)),
                         ),
                       ],
                     ],
@@ -96,7 +96,7 @@ class BookingSummaryWidget extends StatelessWidget {
                 children: [
                   Text(
                     'Total Nights',
-                    style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 14),
+                    style: TextStyle(color: Colors.white.withValues(alpha: 0.8), fontSize: 14),
                   ),
                   Text(
                     '$nights',
@@ -105,7 +105,7 @@ class BookingSummaryWidget extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-              Divider(color: Colors.white.withOpacity(0.2)),
+              Divider(color: Colors.white.withValues(alpha: 0.2)),
               const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,7 +137,7 @@ class BookingSummaryWidget extends StatelessWidget {
         border: Border.all(color: const Color(0xFFE2E8F0)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: Colors.black.withValues(alpha: 0.02),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),

@@ -32,7 +32,7 @@ class BookingScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16, 
                       fontWeight: FontWeight.w600, 
-                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
                     ),
                   ),
                   const SizedBox(height: 12),
@@ -55,7 +55,7 @@ class BookingScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16, 
                           fontWeight: FontWeight.w600, 
-                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.8),
                         ),
                       ),
                       Container(
