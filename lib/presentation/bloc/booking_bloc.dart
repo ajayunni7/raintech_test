@@ -15,6 +15,7 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
     on<SelectCheckInDate>(_onSelectCheckInDate);
     on<SelectCheckOutDate>(_onSelectCheckOutDate);
     on<FilterGuests>(_onFilterGuests);
+    on<ClearSelection>(_onClearSelection);
   }
 
   static BookingState _getInitialState() {
@@ -53,6 +54,13 @@ class BookingBloc extends Bloc<BookingEvent, BookingState> {
         maxGuestsFilter: event.maxGuests,
         clearMaxGuestsFilter: event.maxGuests == null,
       ),
+    );
+  }
+
+  void _onClearSelection(ClearSelection event, Emitter<BookingState> emit) {
+    _calculateAndEmit(
+      emit,
+      state.copyWith(clearSelectedRoom: true),
     );
   }
 

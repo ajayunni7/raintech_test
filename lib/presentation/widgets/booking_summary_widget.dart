@@ -5,12 +5,14 @@ class BookingSummaryWidget extends StatelessWidget {
   final int nights;
   final double totalPrice;
   final String? errorMessage;
+  final VoidCallback? onClose;
 
   const BookingSummaryWidget({
     super.key,
     required this.nights,
     required this.totalPrice,
     this.errorMessage,
+    this.onClose,
   });
 
   @override
@@ -73,7 +75,19 @@ class BookingSummaryWidget extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  Icon(Icons.receipt_long_rounded, color: Colors.white.withOpacity(0.8)),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.receipt_long_rounded, color: Colors.white.withOpacity(0.8)),
+                      if (onClose != null) ...[
+                        const SizedBox(width: 12),
+                        InkWell(
+                          onTap: onClose,
+                          child: Icon(Icons.close_rounded, color: Colors.white.withOpacity(0.8)),
+                        ),
+                      ],
+                    ],
+                  ),
                 ],
               ),
               const SizedBox(height: 24),

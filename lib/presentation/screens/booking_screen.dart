@@ -27,9 +27,13 @@ class BookingScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Text(
+                  Text(
                     'Select Dates',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF475569)),
+                    style: TextStyle(
+                      fontSize: 16, 
+                      fontWeight: FontWeight.w600, 
+                      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                    ),
                   ),
                   const SizedBox(height: 12),
                   DateRangePickerWidget(
@@ -46,9 +50,13 @@ class BookingScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         'Select Room',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF475569)),
+                        style: TextStyle(
+                          fontSize: 16, 
+                          fontWeight: FontWeight.w600, 
+                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+                        ),
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -100,6 +108,9 @@ class BookingScreen extends StatelessWidget {
                     nights: state.nights,
                     totalPrice: state.totalPrice,
                     errorMessage: state.errorMessage,
+                    onClose: () {
+                      context.read<BookingBloc>().add(const ClearSelection());
+                    },
                   ),
                 ],
               ),

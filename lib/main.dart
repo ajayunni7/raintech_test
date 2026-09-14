@@ -16,14 +16,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF4F46E5), // Indigo
-          primary: const Color(0xFF4F46E5),
-          secondary: const Color(0xFF0EA5E9), // Sky Blue
-          surface: const Color(0xFFF8FAFC), // Slate 50
+          seedColor: const Color(0xFF9D4EDD), // Amethyst Purple
+          primary: const Color(0xFF9D4EDD),
+          secondary: const Color(0xFFC77DFF), // Light Purple
+          surface: const Color(0xFFFAF5FF), // Purple 50
           error: const Color(0xFFEF4444), // Red 500
-          onSurface: const Color(0xFF0F172A), // Slate 900
+          onSurface: const Color(0xFF240046), // Dark Purple
         ),
-        scaffoldBackgroundColor: const Color(0xFFF1F5F9), // Slate 100
+        scaffoldBackgroundColor: const Color(0xFFF3E8FF), // Purple 100
         textTheme: GoogleFonts.outfitTextTheme(Theme.of(context).textTheme),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(

@@ -43,3 +43,10 @@ class FilterGuests extends BookingEvent {
   @override
   List<Object?> get props => [maxGuests];
 }
+
+class ClearSelection extends BookingEvent {
+  const ClearSelection();
+
+  @override
+  List<Object?> get props => [];
+}
