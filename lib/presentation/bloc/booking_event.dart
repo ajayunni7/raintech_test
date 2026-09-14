@@ -34,3 +34,12 @@ class SelectCheckOutDate extends BookingEvent {
   @override
   List<Object?> get props => [date];
 }
+
+class FilterGuests extends BookingEvent {
+  final int? maxGuests;
+
+  const FilterGuests(this.maxGuests);
+
+  @override
+  List<Object?> get props => [maxGuests];
+}

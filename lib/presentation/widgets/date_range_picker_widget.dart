@@ -59,45 +59,106 @@ class DateRangePickerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dateFormat = DateFormat.yMMMd();
+    final dateFormat = DateFormat('MMM d, yyyy');
 
-    return Row(
-      children: [
-        Expanded(
-          child: InkWell(
-            onTap: () => _pickCheckInDate(context),
-            child: InputDecorator(
-              decoration: const InputDecoration(
-                labelText: 'Check-in Date',
-                border: OutlineInputBorder(),
-              ),
-              child: Text(
-                checkInDate != null ? dateFormat.format(checkInDate!) : 'Select',
-              ),
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFE2E8F0)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.03),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-        ),
-        const SizedBox(width: 16),
-        Expanded(
-          child: InkWell(
-            onTap: checkInDate == null ? null : () => _pickCheckOutDate(context),
-            child: InputDecorator(
-              decoration: InputDecoration(
-                labelText: 'Check-out Date',
-                border: const OutlineInputBorder(),
-                filled: checkInDate == null,
-                fillColor: checkInDate == null ? Colors.grey.shade200 : null,
-              ),
-              child: Text(
-                checkOutDate != null ? dateFormat.format(checkOutDate!) : 'Select',
-                style: TextStyle(
-                  color: checkInDate == null ? Colors.grey : null,
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: InkWell(
+              borderRadius: const BorderRadius.horizontal(left: Radius.circular(16)),
+              onTap: () => _pickCheckInDate(context),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Check-in', 
+                      style: TextStyle(
+                        color: Colors.grey.shade600, 
+                        fontSize: 12, 
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Icon(Icons.calendar_month_rounded, size: 18, color: Theme.of(context).colorScheme.primary),
+                        const SizedBox(width: 8),
+                        Text(
+                          checkInDate != null ? dateFormat.format(checkInDate!) : 'Add Date',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: checkInDate != null ? FontWeight.w600 : FontWeight.w400,
+                            color: checkInDate != null ? const Color(0xFF0F172A) : Colors.grey.shade400,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-        ),
-      ],
+          Container(width: 1, height: 40, color: const Color(0xFFE2E8F0)),
+          Expanded(
+            child: InkWell(
+              borderRadius: const BorderRadius.horizontal(right: Radius.circular(16)),
+              onTap: checkInDate == null ? null : () => _pickCheckOutDate(context),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Check-out', 
+                      style: TextStyle(
+                        color: Colors.grey.shade600, 
+                        fontSize: 12, 
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.calendar_month_rounded, 
+                          size: 18, 
+                          color: checkInDate == null ? Colors.grey.shade300 : Theme.of(context).colorScheme.primary,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          checkOutDate != null ? dateFormat.format(checkOutDate!) : 'Add Date',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: checkOutDate != null ? FontWeight.w600 : FontWeight.w400,
+                            color: checkOutDate != null 
+                                ? const Color(0xFF0F172A) 
+                                : (checkInDate == null ? Colors.grey.shade300 : Colors.grey.shade400),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

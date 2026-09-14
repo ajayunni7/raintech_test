@@ -1,3 +1,6 @@
+import '../../domain/entities/room.dart';
+import '../../domain/entities/booking.dart';
+
 class BookingValidationResult {
   final bool isValid;
   final String? errorMessage;
@@ -37,4 +40,26 @@ BookingValidationResult validateDates(DateTime checkIn, DateTime checkOut) {
   }
 
   return const BookingValidationResult(isValid: true);
+}
+
+bool isRoomAvailable(
+  Room room,
+  DateTime checkIn,
+  DateTime checkOut,
+  List<Booking> existingBookings,
+) {
+  for (final booking in existingBookings) {
+    if (booking.roomCode == room.code) {
+      final requestedCheckIn = DateTime(checkIn.year, checkIn.month, checkIn.day);
+      final requestedCheckOut = DateTime(checkOut.year, checkOut.month, checkOut.day);
+      final bookedCheckIn = DateTime(booking.checkIn.year, booking.checkIn.month, booking.checkIn.day);
+      final bookedCheckOut = DateTime(booking.checkOut.year, booking.checkOut.month, booking.checkOut.day);
+
+      // Overlap condition:
+      if (requestedCheckIn.isBefore(bookedCheckOut) && requestedCheckOut.isAfter(bookedCheckIn)) {
+        return false;
+      }
+    }
+  }
+  return true;
 }

@@ -16,9 +16,9 @@ void main() {
     await tester.pumpWidget(const MyApp());
 
     // Verify that our booking screen title is found.
-    expect(find.text('Booking Screen'), findsOneWidget);
+    expect(find.text('Book a Room'), findsOneWidget);
     
     // Verify that the initial summary text is present.
-    expect(find.text('Please select a room and valid dates to see your summary.'), findsOneWidget);
+    expect(find.text('Select a room and dates\nto see your summary.'), findsOneWidget);
   });
 }
